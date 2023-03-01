@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <main id="app">
+        <section>
+            <h1>Ejercicios Javascript</h1>
+        </section>
+
+        <h3>1.JS Syntax</h3>
+        <ul>
+            <li>Mensaje por consola
+                <button @click="mensajeConsola()">Click aqui</button>
+            </li>
+            <li>Variables
+                <input type="text" placeholder="VAR-GLOBAL" v-model="variable">
+                <input type="text" placeholder="CONST-CONSTANTE" v-model="constante">
+                <input type="text" placeholder="LET-BLOQUE" v-model="bloque">
+                {{variable}} {{constante}} {{bloque}}
+            </li>
+            <li>Suma
+                <input type="text" v-model="x">+<input type="text" v-model="y">={{resultado}}
+            </li>
+        </ul>
+
+    </main>
+    <script src="main.js" defer></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</body>
+</html>
