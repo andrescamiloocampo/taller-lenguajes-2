@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title>Ejercicios JS</title>
 </head>
+
 <body>
     <main id="app">
         <section>
@@ -18,14 +20,128 @@
             <li>Mensaje por consola
                 <button @click="mensajeConsola()">Click aqui</button>
             </li>
-            <li>Variables
+            <li>Declaracion de variables y constantes
                 <input type="text" placeholder="VAR-GLOBAL" v-model="variable">
-                <input type="text" placeholder="CONST-CONSTANTE" v-model="constante">
+                <input type="text" placeholder="CONST-CONSTANTE" readonly>
                 <input type="text" placeholder="LET-BLOQUE" v-model="bloque">
-                {{variable}} {{constante}} {{bloque}}
+                <br><br>
+                var {{variable}}<br>
+                const {{constante}}<br>
+                let {{bloque}}
             </li>
             <li>Suma
-                <input type="text" v-model="x">+<input type="text" v-model="y">={{resultado}}
+                <input type="number" v-model="x">+<input type="number" v-model="y">={{x+y}}
+            </li>
+        </ul>
+        <h3>2.Tipos de datos</h3>
+        <ul>
+            <li><input type="number" step="0.1" placeholder="Ingrese un numero" v-model="num">
+                <button @click="tiposDeDatos(num)">Mostrar tipo de dato</button><br>
+            </li>
+
+            <li><input type="text" placeholder="Ingrese texto" v-model="text">
+                <button @click="tiposDeDatos(text)">Mostrar tipo de dato</button><br>
+            </li>
+            <li>
+                <label for="check">Checkbox </label>
+                <input type="checkbox" name="" id="check" @click="tiposDeDatos(booleano)" v-model="booleano">
+            </li>
+            <li>
+                <h4>Lista</h4>
+                <ul>
+                    <li v-for="fruta in fruits">
+                        {{fruta}}
+                    </li>
+                </ul>
+                <br>
+                <button @click="tiposDeDatos(fruits)">Mostrar tipo de dato</button>
+            </li>
+            <br>
+            <h6 v-if="tipo!=''">{{tipo}}</h6>
+        </ul>
+        <h3>3.Numeros</h3>
+        <ul class="listaN">
+            <input type="number" step="0.1" placeholder="Ingrese un numero" v-model="num1">
+            <input type="number" step="0.1" placeholder="Parte imaginaria" v-model="im">
+            <br>
+            <button @click="cambiarTipo(num1,0)">float</button>
+            <button @click="cambiarTipo(num1,1)">int</button>
+            <button @click="pasarComplejo(num1,im)">complex</button>
+        </ul>
+        <h3>4.Strings</h3>
+        <ul>
+            <input type="text" placeholder="Ingrese texto" id="cad" v-model="cadena" @change="medir">
+
+            <li>Medir una cadena</li>
+            <h2 id="cad1">{{cadena}}</h2><br>
+
+            <h3 id="med">Medida: {{medida}} </h2><br>
+                <li>Acceso a caracteres</li>
+                <h3>{{texto}}</h3>
+                <input type="number" v-model="x">
+                <button @click="caracter = texto[x]">Mostrar caracter</button>
+                <h1>{{caracter}}</h1>
+
+                <li style="margin-top: 25px;">Rango de caracteres</li><br>
+                <input type="text" style="width: 15px; margin-left: 10px;" v-model="inf">
+                <input type="text" style="width: 15px; margin-left: 10px;" v-model="sup">
+                <h3>{{texto.substring(inf,sup)}}</h3>
+
+                <li style="margin-top: 25px;">Eliminar espacios</li>
+                <h3>{{texto1}}</h3>
+                <button @click="quitarEspacios">Quitar espacios</button>
+
+                <li style="margin-top: 25px;">Mayusculas y minusculas</li>
+                <h3>{{texto2}}</h3>
+                <button @click="letras(0)">MAYUSCULAS</button>
+                <button @click="letras(1)">minusculas</button>
+
+                <li style="margin-top: 25px;">Cambiar letras</li>
+                <h3>{{texto2}}</h3>
+                <input type="text" placeholder="Ingrese una letra a reemplazar" v-model="caracter1">
+                <input type="text" placeholder="Ingrese la nueva letra" v-model="caracter2">
+                <button @click="reemplazar">reemplazar</button>
+
+                <li style="margin-top: 25px;">Template strings</li>
+                <input style="margin-top: 10px; " type="text" placeholder="Ingrese su nombre" v-model="name">
+                <h3>Hello my name is: {{name}}</h3>
+        </ul>
+
+        <h3>5.Booleans</h3>
+        <ul>
+            <li>
+                <input type="text" placeholder="Ingrese una validacion" v-model="exp">
+                <button @click="interpretar(exp)">Validar expresion</button>
+                {{validar}}
+            </li>
+        </ul>
+
+        <h3 style="margin-top: 40px;">6.Operators</h3>
+        <ul>
+            <li>
+                <h4>Operadores aritmeticos</h4>
+                <input type="number" step="0.1" id="inputS"> + <input type="number" step="0.1" id="inputS1"> = <p>{{resultados[0]}}</p>
+                <button @click="operaciones(1)">sumar</button><br>
+                
+                <input type="number" step="0.1" id="inputR"> - <input type="number" step="0.1" id="inputR1"> = <p>{{resultados[1]}}</p>
+                <button @click="operaciones(2)">restar</button><br>
+
+                <input type="number" step="0.1" id="inputM"> * <input type="number" step="0.1" id="inputM1"> = <p>{{resultados[2]}}</p>
+                <button @click="operaciones(3)">multiplicar</button><br>
+
+                <input type="number" step="0.1" id="inputD"> / <input type="number" step="0.1" id="inputD1"> = <p>{{resultados[3]}}</p>
+                <button @click="operaciones(4)">dividir</button><br>
+            </li>
+            
+            <li>
+                <h4>Operador "in" en JavaScript</h4>
+                <ul>
+                    <li v-for="fruta in fruits">
+                        {{fruta}}
+                    </li>
+                </ul>
+                <input type="text" id="fruitInput" placeholder="Ingrese una fruta">
+                <button @click="incluye">Buscar fruta</button>
             </li>
         </ul>
 
@@ -34,4 +150,5 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 </body>
+
 </html>
