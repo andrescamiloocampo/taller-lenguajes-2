@@ -14,7 +14,7 @@ const app = {
             text:'',
             tipo:'',
             fruits:['Apple','Banana','Cherry'],
-            cadena:'',
+            cadena:'...',
             texto:'Hello world',
             texto1:'    Hello world     ',
             texto2:'Hello world',

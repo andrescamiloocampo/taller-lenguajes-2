@@ -11,139 +11,205 @@
 
 <body>
     <main id="app">
-        <section>
-            <h1>Ejercicios Javascript</h1>
-        </section>
+        <nav>
+            <h1>Ejercicios JavaScript</h1>
+        </nav>
 
-        <h3>1.JS Syntax</h3>
-        <ul>
-            <li>Mensaje por consola
-                <button @click="mensajeConsola()">Click aqui</button>
-            </li>
-            <li>Declaracion de variables y constantes
+        <section class="sintax">
+            <h3 id="titulo">1.JS Syntax</h3>
+            <article id="sa1">
+                <h4>Mensaje por consola</h4>
+                <button @click="mensajeConsola()">
+                    <h4>Click aquí</h4>
+                </button>
+            </article>
+
+            <article id="sa2">
+                <h4>Declaracion de variables y constantes</h4>
                 <input type="text" placeholder="VAR-GLOBAL" v-model="variable">
                 <input type="text" placeholder="CONST-CONSTANTE" readonly>
                 <input type="text" placeholder="LET-BLOQUE" v-model="bloque">
                 <br><br>
-                var {{variable}}<br>
-                const {{constante}}<br>
-                let {{bloque}}
-            </li>
-            <li>Suma
-                <input type="number" v-model="x">+<input type="number" v-model="y">={{x+y}}
-            </li>
-        </ul>
-        <h3>2.Tipos de datos</h3>
-        <ul>
-            <li><input type="number" step="0.1" placeholder="Ingrese un numero" v-model="num">
-                <button @click="tiposDeDatos(num)">Mostrar tipo de dato</button><br>
-            </li>
+                <h4>var {{variable}}</h4>
+                <h4>const {{constante}}</h4>
+                <h4>let {{bloque}}</h4>
+            </article>
 
-            <li><input type="text" placeholder="Ingrese texto" v-model="text">
-                <button @click="tiposDeDatos(text)">Mostrar tipo de dato</button><br>
-            </li>
-            <li>
-                <label for="check">Checkbox </label>
+            <article id="sa3">
+                <h4>Suma</h4>
+                <input type="number" v-model="x">+<input type="number" v-model="y">
+                <h4 id="res">= {{x+y}}</h4>
+            </article>
+        </section>
+
+
+        <section class="datos">
+            <h3>2.Tipos de datos</h3>
+
+            <article id="at1">
+                <input type="number" step="0.1" placeholder="Ingrese un numero" v-model="num">
+                <button @click="tiposDeDatos(num)">
+                    <h4>Mostrar tipo de dato</h4>
+                </button><br>
+
+                <input type="text" placeholder="Ingrese texto" v-model="text">
+                <button @click="tiposDeDatos(text)">
+                    <h4>Mostrar tipo de dato</h4>
+                </button><br>
+
+                <label for="check" id="cb">Checkbox</label>
                 <input type="checkbox" name="" id="check" @click="tiposDeDatos(booleano)" v-model="booleano">
-            </li>
-            <li>
-                <h4>Lista</h4>
+            </article>
+
+            <article id="at2">
+                <h4 id="tl">Lista</h4>
                 <ul>
                     <li v-for="fruta in fruits">
                         {{fruta}}
                     </li>
                 </ul>
                 <br>
-                <button @click="tiposDeDatos(fruits)">Mostrar tipo de dato</button>
-            </li>
-            <br>
-            <h6 v-if="tipo!=''">{{tipo}}</h6>
-        </ul>
-        <h3>3.Numeros</h3>
-        <ul class="listaN">
-            <input type="number" step="0.1" placeholder="Ingrese un numero" v-model="num1">
-            <input type="number" step="0.1" placeholder="Parte imaginaria" v-model="im">
-            <br>
-            <button @click="cambiarTipo(num1,0)">float</button>
-            <button @click="cambiarTipo(num1,1)">int</button>
-            <button @click="pasarComplejo(num1,im)">complex</button>
-        </ul>
-        <h3>4.Strings</h3>
-        <ul>
-            <input type="text" placeholder="Ingrese texto" id="cad" v-model="cadena" @change="medir">
+                <button @click="tiposDeDatos(fruits)">
+                    <h4>Mostrar tipo de dato</h4>
+                </button>
+                <h4 v-if="tipo!=''">{{tipo}}</h4>
+            </article>
+        </section>
 
-            <li>Medir una cadena</li>
-            <h2 id="cad1">{{cadena}}</h2><br>
+        <section class="numeros">
+            <h3>3.Numeros</h3>
+            <article id="an">
+                <section id="subN">
+                    <input type="number" step="0.1" placeholder="Ingrese un numero" v-model="num1">
+                    <input type="number" step="0.1" placeholder="Parte imaginaria" v-model="im">
+                </section>
 
-            <h3 id="med">Medida: {{medida}} </h2><br>
-                <li>Acceso a caracteres</li>
-                <h3>{{texto}}</h3>
+                <section id="subN1">
+                    <button @click="cambiarTipo(num1,0)">float</button>
+                    <button @click="cambiarTipo(num1,1)">int</button>
+                    <button @click="pasarComplejo(num1,im)">complex</button>
+                </section>
+            </article>
+        </section>
+
+        <section class="cadenas">
+            <h3 id="titleC">4.Strings</h3>
+
+            <article id="cd1">
+                <h4 id="td1">Medir una cadena</h4>
+                <input type="text" placeholder="Ingrese texto" id="cad" v-model="cadena" @change="medir">
+                <h2 id="cad1">{{cadena}}</h2>
+                <h3 id="med">Medida: {{medida}} </h3>
+            </article>
+
+
+            <article id="cd2">
+                <h4>Acceso a caracteres</h4>
+                <h4>{{texto}}</h4>
                 <input type="number" v-model="x">
-                <button @click="caracter = texto[x]">Mostrar caracter</button>
+                <button @click="caracter = texto[x]">Mostrar carácter</button>
                 <h1>{{caracter}}</h1>
 
-                <li style="margin-top: 25px;">Rango de caracteres</li><br>
-                <input type="text" style="width: 15px; margin-left: 10px;" v-model="inf">
-                <input type="text" style="width: 15px; margin-left: 10px;" v-model="sup">
+                <h4>Rango de caracteres</h4>
+
+                <section id="cd22">
+                    <input type="text" style="width: 35px !important; margin-left: 10px; border-radius: 5px;" v-model="inf">
+                    <input type="text" style="width: 35px !important; margin-left: 10px; border-radius: 5px;" v-model="sup">
+                </section>
+
                 <h3>{{texto.substring(inf,sup)}}</h3>
+            </article>
 
-                <li style="margin-top: 25px;">Eliminar espacios</li>
-                <h3>{{texto1}}</h3>
-                <button @click="quitarEspacios">Quitar espacios</button>
+            <section id="cd3">
+                <h4>Eliminar espacios</h4>
+                <h4>{{texto1}}</h4>
+                <button id="botonq" @click="quitarEspacios">Quitar espacios</button>
 
-                <li style="margin-top: 25px;">Mayusculas y minusculas</li>
-                <h3>{{texto2}}</h3>
-                <button @click="letras(0)">MAYUSCULAS</button>
-                <button @click="letras(1)">minusculas</button>
+                <h4 style="margin-top: 25px;">Mayusculas y minusculas</h4>
+                <h4>{{texto2}}</h4>
 
-                <li style="margin-top: 25px;">Cambiar letras</li>
-                <h3>{{texto2}}</h3>
-                <input type="text" placeholder="Ingrese una letra a reemplazar" v-model="caracter1">
-                <input type="text" placeholder="Ingrese la nueva letra" v-model="caracter2">
-                <button @click="reemplazar">reemplazar</button>
+                <article id="cd3-1">
+                    <button @click="letras(0)">MAYÚSCULAS</button>
+                    <button @click="letras(1)">minúsculas</button>
+                </article>
+            </section>
 
-                <li style="margin-top: 25px;">Template strings</li>
-                <input style="margin-top: 10px; " type="text" placeholder="Ingrese su nombre" v-model="name">
-                <h3>Hello my name is: {{name}}</h3>
-        </ul>
 
-        <h3>5.Booleans</h3>
-        <ul>
-            <li>
-                <input type="text" placeholder="Ingrese una validacion" v-model="exp">
-                <button @click="interpretar(exp)">Validar expresion</button>
-                {{validar}}
-            </li>
-        </ul>
+            <section id="cd4">
+                <h4 style="margin-top: 25px;">Cambiar letras</h4>
+                <h4>{{texto2}}</h4>
 
-        <h3 style="margin-top: 40px;">6.Operators</h3>
-        <ul>
-            <li>
-                <h4>Operadores aritmeticos</h4>
-                <input type="number" step="0.1" id="inputS"> + <input type="number" step="0.1" id="inputS1"> = <p>{{resultados[0]}}</p>
-                <button @click="operaciones(1)">sumar</button><br>
-                
-                <input type="number" step="0.1" id="inputR"> - <input type="number" step="0.1" id="inputR1"> = <p>{{resultados[1]}}</p>
-                <button @click="operaciones(2)">restar</button><br>
+                <article id="cd4-1">
+                    <input type="text" placeholder="Ingrese una letra a reemplazar" v-model="caracter1">
+                    <input type="text" placeholder="Ingrese la nueva letra" v-model="caracter2">
+                </article>
+                <button @click="reemplazar">Reemplazar</button>
 
-                <input type="number" step="0.1" id="inputM"> * <input type="number" step="0.1" id="inputM1"> = <p>{{resultados[2]}}</p>
-                <button @click="operaciones(3)">multiplicar</button><br>
-
-                <input type="number" step="0.1" id="inputD"> / <input type="number" step="0.1" id="inputD1"> = <p>{{resultados[3]}}</p>
-                <button @click="operaciones(4)">dividir</button><br>
-            </li>
-            
-            <li>
-                <h4>Operador "in" en JavaScript</h4>
-                <ul>
-                    <li v-for="fruta in fruits">
-                        {{fruta}}
-                    </li>
+                <h4 style="margin-top: 25px;">Template strings</h4>
+                <input id="nom" style="margin-top: 10px; " type="text" placeholder="Ingrese su nombre" v-model="name">
+                <h4 style="margin-bottom: 20px; margin-top: 20px;">Hello my name is: {{name}}</h4>
                 </ul>
-                <input type="text" id="fruitInput" placeholder="Ingrese una fruta">
-                <button @click="incluye">Buscar fruta</button>
-            </li>
-        </ul>
+            </section>
+        </section>
+
+
+        <section id="bo">
+            <h3>5.Booleans</h3>
+            <article id="bo1">
+                    <input type="text" placeholder="Ingrese una validacion" v-model="exp">
+                    <button @click="interpretar(exp)">Validar expresion</button>
+                    <h4>{{validar}}</h4>
+            </article>
+        </section>
+
+
+        <section id="op">
+            <h3 style="margin-top: 40px;">6.Operators</h3>
+            
+                <article id="op1">
+                    <br>
+                    <h4 style="margin-bottom: 10px;">Operadores aritmeticos</h4>
+
+                    <section class="op1-1">
+                        <input type="number" step="0.1" id="inputS" class="inputS"> + <input type="number" step="0.1" id="inputS1" class="inputS1"> = <p>
+                            {{resultados[0]}}</p>
+                        </section>
+                        <button class="bs" @click="operaciones(1)">sumar</button><br>
+    
+                    <section class="op1-1" style="margin-top: 10px;">
+                        <input type="number" step="0.1" id="inputR" class="inputS"> - <input type="number" step="0.1" id="inputR1" class="inputS1"> = <p>
+                            {{resultados[1]}}</p>
+                    </section>
+                    <button class="bs" @click="operaciones(2)">restar</button><br>
+
+                    <section class="op1-1" style="margin-top: 10px;">
+                        <input type="number" step="0.1" id="inputM" class="inputS"> * <input type="number" step="0.1" id="inputM1" class="inputS1"> = <p>
+                            {{resultados[2]}}</p>
+                    </section>
+                    <button class="bs" @click="operaciones(3)">multiplicar</button><br>
+    
+                    <section class="op1-1" style="margin-top: 10px;">
+                        <input type="number" step="0.1" id="inputD" class="inputS"> / <input type="number" step="0.1" id="inputD1" class="inputS1"> = <p>
+                            {{resultados[3]}}</p>
+                    </section>
+                    <button class="bs" @click="operaciones(4)">dividir</button><br>
+                </article>
+    
+                
+                <article id="op2">
+                    <h4 style="margin-top: 3%;">Operador "in" en JavaScript</h4>
+                    <ul>
+                        <li v-for="fruta in fruits">
+                            {{fruta}}
+                        </li>
+                    </ul>
+                    <input type="text" id="fruitInput" placeholder="Ingrese una fruta">
+                    <button @click="incluye">Buscar fruta</button>
+                </article>
+        
+        </section>
+
+        <footer></footer>
 
     </main>
     <script src="main.js" defer></script>
