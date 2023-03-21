@@ -86,6 +86,7 @@ if (fruits.includes("apple")) {
     console.log("Yes, apple is a fruit!")
 }
 
+//Listas
 fruits = ["apple", "banana", "cherry"]
 console.log(fruits[1])
 
