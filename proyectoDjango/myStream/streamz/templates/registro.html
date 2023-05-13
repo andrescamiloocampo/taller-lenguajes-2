@@ -1,0 +1,14 @@
+{% extends 'master.html' %}
+{% block content %}
+<body style="background: linear-gradient(to bottom right, #dbe4e7, #a8b7bd, #ffffff); margin-bottom: 85px;">
+  <div class="container d-flex flex-column bg-light mt-5 w-50 rounded p-5" style="width: 50%;">
+      <form method="post" class="form d-flex flex-column justify-content-center" style="width: 50%; margin-left: 25%;">
+          <h3>Registro</h3>
+          {%csrf_token%}
+          {{form}}        
+          <button type="submit" id="submit" class="btn btn-primary mt-3">Registrarse</button>
+        </form>
+  </div>  
+</body>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{%extends 'master.html'%}
+
+{% block content %}
+<body style="background: linear-gradient(to bottom right, #dbe4e7, #a8b7bd, #ffffff); margin-bottom: 210px;">
+  <div class="container d-flex flex-column justify-content-center bg-light mt-5 w-50 rounded p-5">
+      <form method="post" class="form d-flex flex-column justify-content-center" style="width: 50%; margin-left: 25%;">
+          <h3>Iniciar Sesión</h3>
+          {%csrf_token%}
+          <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Nombre de usuario:</label>
+            <input type="text" name="{{ form.username.name }}" class="form-control rounded" id="{{ form.username.id_for_label }}">
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password.id_for_label }}">Contraseña:</label>
+            <input type="password" name="{{ form.password.name }}" class="form-control rounded" id="{{ form.password.id_for_label }}">
+        </div>
+        <button type="submit" id="submit" class="btn btn-primary mt-3">Iniciar sesión</button>
+        <a href="/registro" class="mt-2">Registrarse</a>
+        </form>
+  </div>
+</body>
+{% endblock %}

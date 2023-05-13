@@ -1,0 +1,33 @@
+{%extends 'master.html'%}
+
+{%block content%}
+<div class="d-flex justify-content-center align-items-center">
+    <section class="col-10 col-lg-8 mt-3 mb-5">
+      <div class="d-flex justify-content-center">
+         <!-- <video src="" class="embed-responsive-item w-75 rounded m-4" controls></video>  -->
+        <img class="w-100 rounded" src="{{imagen.imagen.url}}" style="object-fit: cover;">
+      </div>
+      <div class="d-flex flex-column rounded bg-light m-4" style="overflow-y: scroll; height: 600px;">
+        <h4 class="text-center">Comentarios</h4>
+        {%for comment in comments%}
+        <div class="bg-white rounded m-2 p-2" style="margin-top: 10px;">
+          <h5>{{comment.username}}:</h5>
+          <p>{{comment.comentario}}</p>
+        </div>     
+        {%endfor%}         
+      </div>
+  
+      <!-- <form class="d-flex flex-row justify-content-center align-items-center m-4">
+        <input type="text" class="form-control col-8 col-md-6 col-lg-5 border-1 rounded mr-2" placeholder="Ingrese su comentario" id="comentario">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form> -->
+      <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit" class="btn btn-primary">Envíar</button>
+      </form>
+    </section>
+  </div>
+  
+  
+{%endblock%}

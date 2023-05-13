@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <body>
-
-{% for x in fruits %}
-  <h1>{{ x }}</h1>
-{% endfor %}
-
-<p>In views.py you can see what the fruits variable looks like.</p>
-
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+    </tr>    
+    {%for x in mymembers%}
+    <tr>
+      <td>{{x.id}}</td>
+      <td>{{x.firstname}}</td>
+      <td>{{x.lastname}}</td>
+    </tr>
+    {%endfor%}
+  </table>
 </body>
+
 </html>

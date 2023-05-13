@@ -1,0 +1,20 @@
+{% extends 'master.html' %}
+
+{% block content %}   
+
+  <div class="container">
+    <div class="row justify-content-center align-items-center mt-4 mb-5">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header bg-dark text-white">Transmisión en vivo</div>
+          <div class="card-body">
+            <image class="rounded col-12" src="{% url 'live_video'%}" alt="video" style="object-fit: cover;"></image>
+          </div>
+          <div class="card-footer">
+            <a href="\guardar" class="btn btn-danger">Guardar video</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

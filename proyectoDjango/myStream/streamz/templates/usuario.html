@@ -1,0 +1,38 @@
+{% extends 'master.html' %}
+
+{% block content %}   
+
+  <div class="container">
+    <div class="row justify-content-center align-items-center mt-4 mb-5">
+      <div class="col-lg-6 rounded p-3 bg-light">
+        <h3 class="mb-4">Información de usuario</h3>
+        <div class="mb-3">
+            <label class="form-label">Nombre de usuario:</label>
+            <p>{{ myUser.username }}</p>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Correo electrónico:</label>
+            <p>{{ myUser.email }}</p>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">ID de usuario:</label>
+            <p>{{ myUser.id }}</p>
+        </div>
+    </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header bg-dark text-white">Transmisión en vivo</div>      
+          <div class="card-body">
+            <img class="rounded col-12" src="{% url 'live_video' %}" alt="">
+          </div>
+          <div class="card-footer">
+            <a href="{% url 'iniciar_transmision' %}" class="btn btn-danger">Iniciar transmisión</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center align-items-center mb-4">
+      <a href="/logout" class="text-white p-3 btn btn-primary">Cerrar sesión</a>
+    </div>
+  </div>
+{% endblock %}
