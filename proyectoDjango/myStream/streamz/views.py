@@ -13,11 +13,14 @@ from django.http import HttpRequest
 import cv2
 import threading
 import os
+import datetime
 import django
 from django.conf import settings
 from django.contrib.auth.models import User
 from streamz.models import comentarios
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_protect
+from django.template import RequestContext
 from .models import Video
 
 # Create your views here.
@@ -64,13 +67,25 @@ class camara(object):
         while True:
             (self.grabbed,self.frame) = self.video.read()
 
+# def crearMiniatura(request):
+#     cam = camara()
+#     frame = cam.get_frame()
+#     nombreImagen = datetime.date.today().strftime("%Y-%m-%d")+'.jpg'
+#     rutaImagen = os.path.join(settings.MEDIA_ROOT,"videos",nombreImagen)
+#     with open(rutaImagen,'wb') as f:
+#         f.write(frame)
+#     context={
+#         "ruta":rutaImagen
+#     }
+#     return render(request,'guardar_video.html',context)
+
 def gen(camara):
     while True:
         frame = camara.get_frame()
         yield(b'--frame\r\n'
               b'Content-Type: image/jpeg\r\n\r\n'+frame+b'\r\n\r\n')
         
-def iniciar_transmision(request):
+def obtenerVideo(request):
     if request.user.is_authenticated:
         return redirect('/stream')
     else:
@@ -137,6 +152,12 @@ def borrar_imagen(url):
 
 @login_required
 def guardarVideo(request):
+    cam = camara()
+    frame = cam.get_frame()
+    nombreImagen = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")+'.jpg'
+    rutaImagen = os.path.join(settings.MEDIA_ROOT,"videos",nombreImagen)
+    with open(rutaImagen,'wb') as f:
+       f.write(frame)
     if request.method == 'POST':
         form = guardarVideoForm(request.POST, request.FILES)
         if form.is_valid():
@@ -145,13 +166,13 @@ def guardarVideo(request):
                 primero = Video.objects.order_by('fecha_publicacion').first()
                 borrar_imagen(primero.imagen)
                 primero.delete()
-            video = Video(usuario=request.user, imagen=form.cleaned_data['imagen'])
+            # video = Video(usuario=request.user, imagen=form.cleaned_data['imagen'])
+            video = Video(usuario=request.user,imagen="videos/{}".format(nombreImagen))
             video.save()
             return redirect('exito')
     else:
         form = guardarVideoForm()
-
-    return render(request, 'guardar_video.html', {'form': form})
+    return render(request, 'guardar_video.html', {'form': form})        
 
 def exito(request):
     return render(request, 'exito.html')

@@ -45,7 +45,7 @@ class UserRegisterForm(UserCreationForm):
         )            
 
 class guardarVideoForm(forms.Form):
-    imagen = forms.ImageField()
+   # imagen = forms.ImageField()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -55,10 +55,10 @@ class guardarVideoForm(forms.Form):
         self.helper.form_enctype = 'multipart/form-data' 
 
         self.helper.layout = Layout(
-            Row(
-                Column('imagen', css_class='col-md-6'),
-                css_class='form-group'
-            ),
+            # Row(
+            #     Column('imagen', css_class='col-md-6'),
+            #     css_class='form-group'
+            # ),
             Submit('submit', 'Guardar video', css_class='btn btn-primary')
         )
 
