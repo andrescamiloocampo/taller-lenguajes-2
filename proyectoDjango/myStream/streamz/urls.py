@@ -15,6 +15,5 @@ urlpatterns = [
     path('obtenerVideo/', views.obtenerVideo, name='obtenerVideo'),
     path('guardar/',views.guardarVideo,name='guardarVideo'),
     path('exito/',views.exito,name='exito'),
-    path('stream/',views.streamz,name='stream'),
-    # path('frame/',views.crearMiniatura,name='frame'),
+    path('stream/',views.streamz,name='stream'),    
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

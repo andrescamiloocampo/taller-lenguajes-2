@@ -25,8 +25,7 @@
           <div class="card-body">
             <img id="camera-preview" class="rounded col-12" src="{% url 'live_video' %}" alt="">
           </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-success">Iniciar transmisión</a>            
+          <div class="card-footer">                     
             <a href="{% url 'obtenerVideo' %}" class="btn btn-danger">Terminar transmisión</a>
           </div>
         </div>
@@ -36,35 +35,5 @@
       <a href="/logout" class="text-white p-3 btn btn-primary">Cerrar sesión</a>
     </div>
   </div>
-
-  <script>
-    // Obtener el elemento de la vista previa de la cámara
-    const cameraPreview = document.getElementById('camera-preview');
-
-    // Función para encender la cámara
-    function startCamera() {
-        // Obtener acceso a la cámara
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(stream => {
-                // Establecer la fuente de la vista previa de la cámara
-                cameraPreview.srcObject = stream;
-            })
-            .catch(error => {
-                console.error('Error al obtener acceso a la cámara: ', error);
-            });
-    }
-
-    // Función para apagar la cámara
-    function stopCamera() {
-        // Obtener todos los tracks de la cámara
-        const tracks = cameraPreview.srcObject.getTracks();
-        tracks.forEach(track => {
-            // Detener cada track
-            track.stop();
-        });
-        // Establecer la fuente de la vista previa de la cámara a null
-        cameraPreview.srcObject = null;
-    }
-</script>
 
 {% endblock %}

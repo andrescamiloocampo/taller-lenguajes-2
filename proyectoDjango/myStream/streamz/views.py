@@ -23,8 +23,6 @@ from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
 from .models import Video
 
-# Create your views here.
-
 def principal(request):
     imagenes = Video.objects.all().values()
     context = {
@@ -66,18 +64,6 @@ class camara(object):
     def update(self):
         while True:
             (self.grabbed,self.frame) = self.video.read()
-
-# def crearMiniatura(request):
-#     cam = camara()
-#     frame = cam.get_frame()
-#     nombreImagen = datetime.date.today().strftime("%Y-%m-%d")+'.jpg'
-#     rutaImagen = os.path.join(settings.MEDIA_ROOT,"videos",nombreImagen)
-#     with open(rutaImagen,'wb') as f:
-#         f.write(frame)
-#     context={
-#         "ruta":rutaImagen
-#     }
-#     return render(request,'guardar_video.html',context)
 
 def gen(camara):
     while True:
@@ -165,8 +151,7 @@ def guardarVideo(request):
             if total == 10:
                 primero = Video.objects.order_by('fecha_publicacion').first()
                 borrar_imagen(primero.imagen)
-                primero.delete()
-            # video = Video(usuario=request.user, imagen=form.cleaned_data['imagen'])
+                primero.delete()            
             video = Video(usuario=request.user,imagen="videos/{}".format(nombreImagen))
             video.save()
             return redirect('exito')

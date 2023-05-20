@@ -11,7 +11,6 @@
           <image class="rounded col-12" src="{% url 'live_video'%}" alt="video" style="object-fit: cover;"></image>
         </div>
         <div class="card-footer">
-          <!-- <a href="\guardar" class="btn btn-danger">Guardar video</a>           -->
           <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form }}
